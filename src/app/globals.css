@@ -1,0 +1,111 @@
+/* MUI styles live in the "mui" layer so Tailwind layout utilities can override them. */
+@layer theme, base, mui, components, utilities;
+@import "tailwindcss";
+
+:root {
+  --paper: #f6f4ef;
+  --surface: #ffffff;
+  --surface-2: #fbfaf7;
+  --ink: #172033;
+  --ink-2: #3b4457;
+  --muted: #687184;
+  --line: #e5e1d8;
+  --line-strong: #cfc9bc;
+  --brand: #0e6b5c;
+  --brand-ink: #0a5246;
+  --brand-soft: #e2f0ec;
+  --accent: #c2611f;
+
+  --add-bg: #e6f5ea;
+  --add-ink: #18753a;
+  --mod-bg: #fdf3d8;
+  --mod-ink: #8a5a00;
+  --del-bg: #fce9e7;
+  --del-ink: #b42318;
+  --move-bg: #e9eefc;
+  --move-ink: #3346a8;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-soft: var(--brand-soft);
+  --color-accent: var(--accent);
+  --color-add-bg: var(--add-bg);
+  --color-add-ink: var(--add-ink);
+  --color-mod-bg: var(--mod-bg);
+  --color-mod-ink: var(--mod-ink);
+  --color-del-bg: var(--del-bg);
+  --color-del-ink: var(--del-ink);
+  --color-move-bg: var(--move-bg);
+  --color-move-ink: var(--move-ink);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-fraunces);
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: #cde7df;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* MUI fields draw their own focus border; avoid a second ring. */
+.MuiInputBase-input:focus-visible,
+.MuiSelect-select:focus-visible,
+.MuiButtonBase-root:focus-visible {
+  outline: none;
+}
+.MuiButtonBase-root.Mui-focusVisible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.font-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-optical-sizing: auto;
+}
+
+/* Word-level diff marks inside modified rows */
+.diff-ins {
+  background: #c9ecd3;
+  color: #0f5a2b;
+  border-radius: 3px;
+  padding: 0 1px;
+  text-decoration: none;
+}
+.diff-del {
+  background: #f8d4cf;
+  color: #8f1d14;
+  border-radius: 3px;
+  padding: 0 1px;
+  text-decoration: line-through;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
